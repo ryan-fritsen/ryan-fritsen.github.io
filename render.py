@@ -7,6 +7,7 @@ env = Environment(loader=FileSystemLoader('templates'))
 index_template = env.get_template('index.html')
 post_template = env.get_template('post.html')
 
+## Input markdown files from the /content directory
 posts = []
 for md_file in os.listdir('content'):
     if md_file.endswith('.md'):
@@ -24,6 +25,7 @@ with open('index.html', 'w') as f:
     f.write(index_template.render(posts=posts))
 
 # Render each post page
+# Output the html files to the /output/posts directory
 os.makedirs('output/posts', exist_ok=True)
 for post in posts:
     with open(f"output/posts/{post['slug']}.html", 'w') as f:
