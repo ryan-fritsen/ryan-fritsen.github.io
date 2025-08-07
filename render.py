@@ -20,7 +20,7 @@ for md_file in os.listdir('content'):
             })
 
 # Render index.html with links to posts
-with open('output/index.html', 'w') as f:
+with open('index.html', 'w') as f:
     f.write(index_template.render(posts=posts))
 
 # Render each post page
